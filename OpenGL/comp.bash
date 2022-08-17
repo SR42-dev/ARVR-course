@@ -1,0 +1,1 @@
+g++ projectionMatrix.cpp -lglut -lGL -lGLU -lGLEW
