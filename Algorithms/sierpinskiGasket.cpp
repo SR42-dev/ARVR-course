@@ -190,17 +190,17 @@ int main(int argc, char *argv[])
 #include <GL/glut.h>
 #include <stdlib.h>
 
-static void display(void)
+void display()
 {
-    GLint vx[] = {100, 0, 200};
-    GLint vy[] = {0, 200, 200};
-    GLint px = 100;
-    GLint py = 100;
+    int vx[] = {100, 0, 200};
+    int vy[] = {0, 200, 200};
+    int px = 100;
+    int py = 100;
     glClear(GL_COLOR_BUFFER_BIT);
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_POINTS);
 
-        for (GLint i = 0; i < INT16_MAX; i++) 
+        for (int i = 0; i < INT16_MAX; i++) 
         {
             int whichV = rand() % 3;
             int newPx = (px + vx[whichV]) / 2;
@@ -214,12 +214,6 @@ static void display(void)
     glFlush();
 }
 
-void init() 
-{
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    gluOrtho2D(0, 210, 210, 0);
-}
-
 int main(int argc, char *argv[]) 
 {
     glutInit(&argc, argv);
@@ -227,7 +221,8 @@ int main(int argc, char *argv[])
     glutInitWindowSize(500, 500);
     glutCreateWindow("Gasket");
     glutDisplayFunc(display);
-    init();
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    gluOrtho2D(0, 210, 210, 0);
     glutMainLoop();
     return 0;
 }
